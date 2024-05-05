@@ -1,14 +1,8 @@
 #!/bin/bash
 set -e
-########################
-# Help
-############
-
-
-########### TODO ##############
-#### Enhance output/logging ####
-# - Change file names generated to be unique accross runs (start time epoch ?)
-# - option to add custom extension
+#########################
+#       Help            #
+#########################
 
 help="$(basename "$0") [-h] [-v] [-d DIRECTORY] [-i random|zero] [-c filecount] [-s filesize] [-u b|kb|mb] [-p MAX_PROC]
 This script is used to create dumb files
@@ -20,14 +14,14 @@ This script is used to create dumb files
     -u Unit (default: MB)
     -p Maximum process to run in parallel (default: 5 - max: 50)"
 
-#######
-# Main Program
-######
+#########################
+#       Main Program    #
+#########################
 VERSION=1.0
 
-###############
-# Default values
-#############
+#########################
+#   Default values      #
+#########################
 
 FILE_COUNT=5
 BLOCK_COUNT=1
@@ -35,9 +29,9 @@ BLOCK_SIZE=1048576
 INPUT_DATA="/dev/zero"
 MAX_PROC=5
 
-#####
-# Process the input options. Add options as needed
-#####
+#############################################################################
+#       Process the input options. Add options as needed                    #
+#############################################################################
 
 # Get the options
 while getopts "hvd:i:c:s:p:u:" option; do
@@ -124,7 +118,6 @@ then
     while [ $i -lt "$FILE_COUNT" ]
     do
         # Wait until we have less than MAX_PROC running dd commands
-        #while [ $(pgrep --full -c "dd if" -ge "$MAX_PROC") ] <--- old way. was produing error: "pgrep: invalid process group: e"
         while [ $(pgrep --full -c "dd if") -ge "$MAX_PROC" ]
         do
             sleep 1
