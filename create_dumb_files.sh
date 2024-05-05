@@ -10,14 +10,14 @@ set -e
 # - Change file names generated to be unique accross runs (start time epoch ?)
 # - option to add custom extension
 
-help="$(basename "$0") [-h] [-v] [-d DIRECTORY] [-i random|zero] [-c filecount] [-s filesize] [-u b|kb|mb|gb] [-p MAX_PROC]
+help="$(basename "$0") [-h] [-v] [-d DIRECTORY] [-i random|zero] [-c filecount] [-s filesize] [-u b|kb|mb] [-p MAX_PROC]
 This script is used to create dumb files
     -h Shows this help text
     -d Directory where the files should be created
     -i Input data type (random of zero) (default: 0)
     -c Number of files to create (default: 5)
     -s Size of unit per file (min/default: 1)
-    -u Unit (default: MB) #To Be Implemented
+    -u Unit (default: MB)
     -p Maximum process to run in parallel (default: 5 - max: 50)"
 
 #######
