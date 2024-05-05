@@ -40,7 +40,7 @@ while getopts "hvd:i:c:s:p:u:" option; do
             echo "$help"
             exit 0;;
         v) #display the script version
-            echo "You are currently running $(basename "0") v$VERSION"
+            echo "You are currently running $(basename "$0") v$VERSION"
             exit;;
         d) #Directory to create the files in
             MY_DIR=${OPTARG}
